@@ -5,12 +5,14 @@
 ;     nasm -fmacho64 hello.asm && ld hello.o && ./a.out
 ; ----------------------------------------------------------------------------------------
 
-			global		start
+			global		_main
 
 			section		.text
-start:		mov			rax, 0x0200000		; system call for write
+_main:		
+			mov			rax, 0x02000004		; system call for write
 			mov			rdi, 1				; file handle for stdout
-			mov			rsi, message		; address of string to output
+			lea			rsi, [rel message]	; lea moves address
+			;mov			rsi, message		; not sure why this causes issues
 			mov			rdx, 13				; number of bytes to output
 			syscall							; invoke the write operation
 			mov			rax, 0x02000001		; system call for exit
