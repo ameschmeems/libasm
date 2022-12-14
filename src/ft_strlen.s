@@ -7,7 +7,7 @@ _ft_strlen:
 increment:
 			inc			rax					; i++
 compare:
-			cmp			BYTE [rdi + rax], 0	; compare str[i] with 0
+			cmp			byte [rdi + rax], 0	; compare str[i] with 0
 			jne			increment			; if above isnt true, go to increment
 done:
 			ret								; return value in rax
