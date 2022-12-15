@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
+#include <stdlib.h>
 #include "libasm.h"
 
 int main(void)
@@ -29,5 +31,25 @@ int main(void)
 	perror("perror after reading file that doesnt exist (to change the errno after ft_write)");
 	printf("Return value of failed ft_read: %zd\n", ft_read(111111111, buf, 1));
 	perror("perror: ft_read");
+	char *copy = ft_strdup("phrog");
+	printf("ft_strdup return for copying string 'phrog' is: %s\n", copy);
+	free(copy);
+	copy = ft_strdup("abcdefghijklmnopqrstuvwxyz");
+	printf("ft_strdup return for copying string 'abcdefghijklmnopqrstuvwxyz' is: %s\n", copy);
+	free(copy);
+	printf("ft_strcmp of 'frog' and 'frog': %d\n", ft_strcmp("frog", "frog"));
+	printf("strcmp of 'frog' and 'frog': %d\n", strcmp("frog", "frog"));
+
+	printf("ft_strcmp of 'frog' and 'frog1': %d\n", ft_strcmp("frog", "frog1"));
+	printf("strcmp of 'frog' and 'frog1': %d\n", strcmp("frog", "frog1"));
+
+	printf("ft_strcmp of 'frog1' and 'frog': %d\n", ft_strcmp("frog1", "frog"));
+	printf("strcmp of 'frog1' and 'frog': %d\n", strcmp("frog1", "frog"));
+
+	printf("ft_strcmp of 'frog1' and 'frog2': %d\n", ft_strcmp("frog1", "frog2"));
+	printf("strcmp of 'frog1' and 'frog2': %d\n", strcmp("frog1", "frog2"));
+
+	printf("Note that this is okay, since the behaviour of strcmp is defined as returning a value less than, equal to, or greater than 0, rather than a specific value\n");
+
 	return (0);
 }

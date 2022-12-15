@@ -7,10 +7,11 @@
 _ft_strdup:
 			push		rdi			; save pointer on stack
 			call		_ft_strlen
-			mov			rdi, [rax + 1]	; set argument for malloc (len + null char)
+			mov			rdi, rax	; set argument for malloc (len)
+			inc			rdi			; add one for null byte
 			call		_malloc
 			jc			error
-			mov			rax, rdi		; put new pointer as dest
+			mov			rdi, rax		; put new pointer as dest
 			pop			rsi				; put old pointer as src
 			call		_ft_strcpy
 error:

@@ -4,8 +4,8 @@
 _ft_strcmp:
 			xor				rcx, rcx			; set index to 0
 loop:
-			mov				rax. byte [rdi + rcx]
-			mov				rdx, byte [rsi + rcx]	; put current chars in registers
+			movzx				rax, byte [rdi + rcx]	; we use movzx instead of move, to zero out rest of memory (we only copy 1 byte into a 4 byte register)
+			movzx				rdx, byte [rsi + rcx]	; put current chars in registers
 			cmp				rax, rdx				; compare characters
 			jne				end
 			inc				rcx						; go to next index
